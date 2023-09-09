@@ -1,0 +1,133 @@
+1.div如何实现水平垂直居中（三种方法）
+    定位计算left 和top值
+    定位设置上下左右为0  margin:auto
+    display:flex   justify-content:center  align-items:center
+2.为何要清除浮动，清除浮动的方法
+    防止子元素浮动导致父元素高度塌陷
+    元素最后加一空元素,给clear:both
+    父元素 overflow:hidden
+           父元素加浮动
+           父元素定位 
+3.flex布局，父级的常用属性，子级的常用属性
+    父级：align-items,justify-content,flex-direction,flex-wrap
+    子级：flex:1 
+4.什么是重绘和回流
+    重绘：当DOM元素属性发生变化时，浏览器会重新绘制相应的元素 
+    回流：当布局发生改变时，会触发回流
+         重绘不一定回流，回流一定重绘            
+5.JS的数据类型，获取数据类型的方法
+    基本：string/number/boolean/undefined/null/symbol
+    引用：object/array/function
+6.浅拷贝和深拷贝的区别，如何实现深拷贝
+    浅拷贝只拷贝一层，深层次的对象只拷贝地址
+    1.Object.assign()
+    2.递归
+    3.lodash库方法 _cloneDeep
+7.什么是闭包，作用，优点，缺点
+    可以访问其他函数内部变量的函数
+    优点：1.减少对全局变量的定义，避免全局变量的污染
+         2.实现了对其他函数内部变量的访问
+         3.变量一直存放在内存中，可以用作缓存
+    缺点：1.造成内存泄露
+         2.性能消耗大                    
+8.什么是递归函数？应用场景
+    函数内部自调用自身
+    数组求和，数组扁平化 
+9.this指向的各种情况
+    普通函数/立即调用函数 指向window
+    箭头函数指向和父级指向一样
+    事件函数指向事件源 
+10.字符串的截取方法
+    slice(start,end) 
+    substring(start,end)
+    substr(start,length)
+11.数组的截取方法
+    slice(start,end) 返回截取的数组
+    splice(start,length,item1,...,itemX) 改变原数组，返回被删除的数组
+12.数组的forEach和map的区别
+    forEach()自行遍历 无返回值
+    map() 有返回值 
+13.什么是防抖和节流
+    本质上都是是高频率执行代码的手段
+    节流: n 秒内只运行一次，若在 n 秒内重复触发，只有一次生效
+    防抖: n 秒后在执行该事件，若在 n 秒内被重复触发，则重新计时
+
+14.ES6新增的特性
+     let/const   Promise  模板字符串  箭头函数 Symbol  Class类  
+15.var，let，const声明变量的区别
+    var:可重复声明， 值可修改，存在变量提升，可以不赋值，函数作用域
+    let:不可重复声明，值可修改，变量不提升，可以不赋值，块级作用域
+    const:不可重复声明，值不可改，变量不提升，必须赋值，块级作用域
+16.什么promise？哪三种状态，实例的哪三个方法分别做了什么？构造函数的哪两个方法及作用
+    ES6新增的构造函数，可以用来封装异步操作并可以获取其成功/失败的结果值
+    pedding初始状态  resolve 成功状态  reject 失败状态
+    then 成功时执行
+    catch 失败时执行
+    finally 最后一定会执行
+    可以解决回调地狱
+17.什么是async、await
+     async作为一个关键字放到函数前面，表明函数是一个异步函数，其返回一个Promise对象
+     可以用.then()  .catch()获取结果
+     await只能放到async函数中 强制暂停不再向下执行，等待异步操作完再继续执行
+18.vue组件中data为什么是个函数？
+19.计算属性和监听属性的区别
+    computed:多对一，支持缓存，不支持异步
+    watch: 一对多，不支持缓存，支持异步
+20.如何实现监听对象
+    深度监听 deep:true 
+21.如何实现立即监听
+    immediate:true 
+22.vue的生命周期？哪个函数可以操作data，哪个函数操作dom
+     data:最早可以在created
+     dom：最早在mounted
+23.组件之间的传值？
+    父子传值：props  $emit  $refs
+    非父子：bus           
+24.什么是动态组件
+     多个组件使用同一个挂载点，动态进行切换
+25.什么是混入
+    一个混入对象可以包含任意组件选项，当组件使用混入对象时，所有混入对象的选项都可以被该组件使用 
+    可以理解为一个公共组件，分发Vue组件中可复用功能，减少代码重复
+26.vue中如何获取dom
+    给元素加ref="name" 
+    使用this.$refs.name获取对应的dom元素
+27.vue中$set什么作用
+     当数据双向绑定失效时，可以使用$set
+     this.$set(原对象,索引,需要赋的值)
+28.vue中$nextTick是什么？
+    在下次DOM更新结束后，自动执行的延迟回调   
+29.vue中常用的指令
+     
+30.v-deep的作用
+    深入改变子组件的样式 
+31.如何让css只在当前的组件中起作用
+    在style标签中加入scoped 
+32.什么是路由懒加载，如何实现
+    路由按需加载
+    component: () => import( '../views/AboutView.vue')
+33.什么是路由缓存，如何实现
+    用keep-alive包裹想要缓存的组件
+34.路由缓存的两个生命周期
+    activated组件激活时   deactivated 组件未激活时
+35.什么是路由守卫，你在项目中做了哪些守卫
+    路由跳转过程中的一些钩子函数
+    全局守卫，组件守卫，路由独享
+    常用的是全局守卫的beforeEach  权限验证和登录判断 
+36.vuex是什么，五个属性分别的作用
+    状态管理模式，用来集中存储共有变量
+    state:存放变量
+    mutations:相当于methods 同步方法
+    actions:异步方法
+    getters:相当于计算属性
+    modules:模块化     
+37.在项目中axios做了哪些公共配置，拦截器又做了什么
+     初始化公共配置，请求拦截器，响应拦截器
+     请求拦截：在发送请求之前做的事
+     响应拦截：在数据请求返回时做的事
+38.开发过程中，你是解决跨域问题的
+    vue.config.js用devServe代理 
+39.用过哪些elementui组件，elementui的表单是如何实现验证的
+     button form表单 table表格 
+40.你还用过哪些ui组件
+   pc端   ElementUI  Ant Design
+   移动端  vant  
